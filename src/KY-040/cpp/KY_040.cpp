@@ -6,7 +6,7 @@
 #include <wiringPi.h>
 #include "KY_040.h"
 
-/* KY_040 instancei vector. */
+/* KY_040 instances vector. */
 std::vector<KY_040*> KY_040::modules = {};
 
 /**
