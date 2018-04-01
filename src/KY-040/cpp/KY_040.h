@@ -19,7 +19,6 @@ class KY_040{
     explicit KY_040(const int clkPin, const int dtPin, const int swPin);
     virtual ~KY_040(void);
 
-    void updateEncoder(void);
     int getRotationValue(void);
 
   private:
@@ -35,6 +34,8 @@ class KY_040{
 
     static std::vector<KY_040*> modules;
     static void wiringPiISRCallback(void);
+
+    void updateEncoder(void);
 };
 
 #endif
