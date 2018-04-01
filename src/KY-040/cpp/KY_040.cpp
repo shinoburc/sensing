@@ -57,6 +57,18 @@ void KY_040::wiringPiISRCallback(){
 // public method
 
 /**
+ * @brief rotationValue getter
+ *
+ * @param void
+ * @return int
+ */
+int KY_040::getRotationValue(){
+    return this->rotationValue;
+}
+
+// private method
+
+/**
  * @brief update rotationValue
  *
  * @param void
@@ -73,16 +85,4 @@ void KY_040::updateEncoder(){
     if(sum == 0b1110 || sum == 0b0111 || sum == 0b0001 || sum == 0b1000) KY_040::rotationValue--;
 
     KY_040::lastEncoded = encoded;
-}
-
-// private method
-
-/**
- * @brief rotationValue getter
- *
- * @param void
- * @return int
- */
-int KY_040::getRotationValue(){
-    return this->rotationValue;
 }
