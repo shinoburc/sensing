@@ -4,7 +4,6 @@
  */
 
 #include <wiringPi.h>
-#include <functional>
 #include "KY_040.h"
 
 /* KY_040 instancei vector. */

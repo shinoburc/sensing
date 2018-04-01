@@ -53,7 +53,7 @@ int main(int argc, char** argv) {
         ts.tv_nsec = 100000000;
 
         while(1){
-            std::cout << "Current illumination : " << module.getRotationValue() << std::endl;
+            std::cout << "Rotation Value: " << module.getRotationValue() << std::endl;
             nanosleep(&ts, NULL);
 
             /* Ctrl-C Handling */
