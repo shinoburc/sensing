@@ -76,7 +76,7 @@ void RGB3Color::flashing(const int times, const int delay_millisecond){
  */
 void RGB3Color::lighting_on(const int pin){
     digitalWrite(pin, HIGH);
-    digitalWrite(pin, 1);
+    digitalWrite(pin, HIGH);
 }
 
 /**
