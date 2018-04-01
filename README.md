@@ -2,7 +2,7 @@
 
 Sensing Program for RaspberryPi, Arduino and more
 
-## Sensing Programs C and C++
+## Sensing Programs C and C++ using wiringPi for Raspberry Pi
 
 - [HC_SR04](../../tree/master/src/HC-SR04): Ultrasonic Ranging Sensor
 - [KY-009](../../tree/master/src/KY-009_KY-016): 3 color LED module(SMD:Surface Mount Device)
