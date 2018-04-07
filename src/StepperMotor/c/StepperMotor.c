@@ -12,7 +12,10 @@
  */
 const int GPIO_PINS[4] = {25, 24, 23, 0};
 
+//2-2相励磁
 int gpioSequence[8] = {0b01000, 0b01100, 0b00100, 0b00110, 0b00010, 0b00011, 0b00001, 0b01001};
+//1-1相励磁
+//int gpioSequence[4] = {0b01000, 0b00100, 0b00010, 0b00001};
 
 enum Direction {
   Clockwise,
@@ -42,15 +45,16 @@ void release(){
 }
 
 void rotate(const double angle, enum Direction direction, const int delay){
+    int gpioSequenceLength = sizeof(gpioSequence) / sizeof(int);
     // 512 steps loop = 1 rotation
     int outputSteps = (angle / 360) * 512;
     for(int i = 0; i < outputSteps; i++){
         if(direction == Clockwise){
-            for(int i = 7; i >= 0; i--) {
+            for(int i = gpioSequenceLength - 1; i >= 0; i--) {
                 outputGpio(i);
             }
         } else {
-            for(int i = 0; i < 8; i++) {
+            for(int i = 0; i < gpioSequenceLength; i++) {
                 outputGpio(i);
             }
         }
@@ -59,10 +63,11 @@ void rotate(const double angle, enum Direction direction, const int delay){
 }
 
 void outputGpio(int step){
-    digitalWrite(GPIO_PINS[0], ((gpioSequence[step] & 0b1000) == 0b1000) ? HIGH : LOW); delayMicroseconds(200);
-    digitalWrite(GPIO_PINS[1], ((gpioSequence[step] & 0b0100) == 0b0100) ? HIGH : LOW); delayMicroseconds(200);
-    digitalWrite(GPIO_PINS[2], ((gpioSequence[step] & 0b0010) == 0b0010) ? HIGH : LOW); delayMicroseconds(200);
-    digitalWrite(GPIO_PINS[3], ((gpioSequence[step] & 0b0001) == 0b0001) ? HIGH : LOW); delayMicroseconds(200);
+    int delay = 200 + (100 * (8 - (sizeof(gpioSequence) / sizeof(int))));
+    digitalWrite(GPIO_PINS[0], ((gpioSequence[step] & 0b1000) == 0b1000) ? HIGH : LOW); delayMicroseconds(delay);
+    digitalWrite(GPIO_PINS[1], ((gpioSequence[step] & 0b0100) == 0b0100) ? HIGH : LOW); delayMicroseconds(delay);
+    digitalWrite(GPIO_PINS[2], ((gpioSequence[step] & 0b0010) == 0b0010) ? HIGH : LOW); delayMicroseconds(delay);
+    digitalWrite(GPIO_PINS[3], ((gpioSequence[step] & 0b0001) == 0b0001) ? HIGH : LOW); delayMicroseconds(delay);
 }
 
 int main(){
