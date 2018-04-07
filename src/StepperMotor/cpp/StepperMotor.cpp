@@ -43,8 +43,9 @@ StepperMotor::~StepperMotor(void){
 /**
  * @brief lighting
  *
- * @param const int : GPIO PIN
- * @param const int : Delay millisecond
+ * @param const int : rotate angle
+ * @param enum StepperMotorDirection : rotate direction
+ * @param const int : rotate delay (speed)
  * @return void
  */
 void StepperMotor::rotate(const double angle, enum StepperMotorDirection direction, const int delay){
