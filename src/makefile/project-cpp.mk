@@ -21,7 +21,7 @@ OBJDIR = objs
 
 GCC = g++
 #CFLAGS = -O2 -MMD -MP -Wall -Wextra
-CFLAGS = -O3 -Wall -pthread -Wno-deprecated
+CFLAGS = -O3 -Wall -pthread -Wno-deprecated -std=c++11
 
 CPPS = $(shell find * -name '*.cpp')
 SRCS = $(filter-out $(NOMAKEDIR), $(CPPS))
